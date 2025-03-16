@@ -5,13 +5,13 @@ const isDarkMode = ref(true);
 
 // load safe time
 onMounted(() => {
-  isDarkMode.value = localStorage.getItem("theme") === "dark";
+  isDarkMode.value = localStorage.getItem("theme") === "light";
   updateTheme();
 });
 
 // update theme if clic
 watch(isDarkMode, (newVal) => {
-  localStorage.setItem("theme", newVal ? "dark" : "light");
+  localStorage.setItem("theme", newVal ? "light" : "dark");
   updateTheme();
 });
 
