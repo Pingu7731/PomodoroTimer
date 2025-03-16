@@ -32,6 +32,7 @@ const updateTheme = () => {
 </template>
 
 <style>
+
 /* the containter */
 .switch {
   position: relative;

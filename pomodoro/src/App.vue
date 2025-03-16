@@ -1,3 +1,4 @@
+@import "tailwindcss";
 <script setup>
 import TimerUi from "./component/TimerUi.vue";
 import toggleDark from "./component/toggleDark.vue";
