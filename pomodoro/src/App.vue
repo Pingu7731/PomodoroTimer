@@ -4,20 +4,16 @@ import toggleDark from "./component/toggleDark.vue";
 </script>
 
 <template>
+  <toggleDark />
   <main>
     <h1>Pomodoro Timer</h1>
     <TimerUi />
-    <!-- <toggleDark /> -->
   </main>
 </template>
 
 <style>
-* {
-  background-color: grey;
-  margin: 5px;
-}
-
 main {
+  flex-direction: column;
   text-align: center;
 }
 </style>
