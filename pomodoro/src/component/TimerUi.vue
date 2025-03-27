@@ -47,14 +47,13 @@ const formatTime = (seconds) => {
 
 <template>
     <main>
-
         <div class="timeDivContainer">
-            <div class="timerName">
+            <div class="timeRow">
                 <label>Focus Time (minutes) : </label>
-                <label>Rest Time(minutes) : </label>
-            </div>
-            <div class="timerInput">
                 <input type="number" v-model="focusTime" min="1" />
+            </div>
+            <div class="timeRow">
+                <label>Rest Time (minutes) : </label>
                 <input type="number" v-model="restTime" min="1" />
             </div>
         </div>
@@ -67,42 +66,94 @@ const formatTime = (seconds) => {
         </div>
     </main>
 </template>
+
 <style scoped>
 main {
     text-align: center;
+    font-family: sans-serif;
+    margin: auto;
+    padding: 20px;
+    color: #ffffff;
 }
 
 h2 {
     font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 .timeDivContainer {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 30px; 
+    padding: 15px;
+    
 }
 
-.timerName {
+.timeRow {
     display: flex;
-    align-items: center;
-    justify-content: left;
     flex-direction: column;
+    align-items: center;
+    gap: 5px; 
 }
-
-.timerInput {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.timerRow label{
+    font-size: 5rem;
+    font-weight: 500;
+    font-family: "Poppins",sans-serif;
+    color: aliceblue;
+    letter-spacing: 1px ;
+}
+.timeRow input{
+  width: 70px;
+  text-align: center;
+  font-size: 2rem;
+  padding: 8px;
+  border: 1px solid #141414;
+  background: #383838;
+  color: white;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.4s;
+}
+.timeRow input:focus{
+    border-color: #ababab;
+    box-shadow: 0 0 10px #414141;
 }
 
 .timer {
     font-size: 3rem;
+    font-weight: bold;
     margin: 20px 0;
+    text-shadow: 0 0 10px rgb(214, 214, 214),0 0 20px rgb(214, 214, 214) ;
 }
-
 input {
     width: 55px;
     text-align: center;
     margin: 5px;
 }
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+button {
+    padding: 10px 16px;
+    font-size: 1rem;
+    background: #414141;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(17, 17, 17, 0.4);
+}
+button:hover {
+    background: #414141;
+    transform: scale(1.05);
+}
+button:active {
+    background: rgb(4, 4, 4);
+    transform: scale(0.95);
+}
+
 </style>
