@@ -96,8 +96,8 @@ h2 {
     align-items: center;
     gap: 5px; 
 }
-.timerRow label{
-    font-size: 5rem;
+.timeRow label{
+    font-size: 1.2rem;
     font-weight: 500;
     font-family: "Poppins",sans-serif;
     color: aliceblue;
