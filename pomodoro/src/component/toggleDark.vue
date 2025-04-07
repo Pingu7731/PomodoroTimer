@@ -16,12 +16,12 @@ watch(isDarkMode, (newVal) => {
 });
 
 const updateTheme = () => {
-  if (isDarkMode.value) {
-    document.documentElement.classList.add("dark-mode");
-  } else {
-    document.documentElement.classList.remove("dark-mode");
-  }
+  const html = document.documentElement;
+  html.classList.remove("dark-mode", "light-mode");
+  html.classList.add(isDarkMode.value ? "dark-mode" : "light-mode");
+  
 };
+
 </script>
 
 <template>
@@ -86,4 +86,22 @@ input:checked + .slider:before {
   background-color: #222;
   color: white;
 }
+
+/* Light mode */
+.light-mode {
+  background-color: #f5f5f5;
+  color: #111;
+}
+
+.light-mode input,
+.light-mode button {
+  background: #fff;
+  color: #111;
+  border: 1px solid #ccc;
+}
+
+.light-mode .timer {
+  text-shadow: 0 0 5px #aaa;
+}
+
 </style>

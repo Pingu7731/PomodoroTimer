@@ -67,7 +67,40 @@ const formatTime = (seconds) => {
     </main>
 </template>
 
-<style scoped>
+<style >
+
+.light-mode main{
+    background-color: #f5f5f5;
+    color:#111;
+}
+.light-mode .timeRow label{
+    color:#222;
+
+}
+.light-mode .timeRow input{
+    background: #fff;
+    color:#111;
+    border:1px solid #ccc;
+}
+.light-mode .timeRow input:focus{
+    border-color :#888;
+    box-shadow: 0 0 10px #aaa;
+}
+.light-mode .timer{
+    color: #222;
+    text-shadow: 0 0 5px #999;
+}
+.light-mode button {
+    background: #ddd;
+    color:#111;
+    box-shadow:0 4px 6px rgba(100,100,100,00.2);
+}
+.light-mode button:hover{
+    background: #ccc;
+}
+.light-mode button:active{
+    background: #bbb;
+}
 main {
     text-align: center;
     font-family: sans-serif;
@@ -155,5 +188,6 @@ button:active {
     background: rgb(4, 4, 4);
     transform: scale(0.95);
 }
+
 
 </style>
