@@ -62,7 +62,7 @@ const removeTask = (index: number) => {
       </div>
     
     
-      <div class="max-h-60 overflow-auto pr-1 ">
+      <div class="max-h-60 overflow-auto pr-1 hide-scrollbar">
       
         <transition-group name="fade"tag="ul" class="space-y-1.5">
           <li v-for="(task,index) in tasks" :key="task.id"
@@ -95,5 +95,14 @@ const removeTask = (index: number) => {
 .fade-leavve-to{
   opacity: 0;
   transform: translateY(90px);
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  overflow: scroll; /* Keep scrollable */
+  -ms-overflow-style: none;  /* For Internet Explorer 10+ */
+  scrollbar-width: none; /* For Firefox */
 }
 </style>
