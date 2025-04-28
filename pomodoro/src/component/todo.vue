@@ -9,6 +9,9 @@ interface Task {
 
 const newTask = ref('')
 const tasks = ref<Task[]>([])
+const editingIndex= ref<number |null>(null)
+const editingText= ref('')
+
 
 const toggleTask = (index: number) => {
   tasks.value[index].completed = !tasks.value[index].completed
@@ -39,9 +42,27 @@ const addTask = () => {
   }
 }
 
+const startEdit =(index:number)=>{
+   editingIndex.value=index
+   editingText.value=tasks.value[index].text
+}
+const saveEdit=(index : number) => {
+  const text= editingText.value.trim()
+  if(text){
+    tasks.value[index].text = text
+    editingIndex.value=null
+    editingText.value=''
+  }
+} 
+const cancelEdit=()=>{
+  editingText.value=''
+  editingIndex.value=null
+}
+
 const removeTask = (index: number) => {
   tasks.value.splice(index, 1)
 }
+
 </script>
 
 <template>
@@ -68,14 +89,26 @@ const removeTask = (index: number) => {
           <li v-for="(task,index) in tasks" :key="task.id"
           class="flex items-center justify-between  rounded-md transition-all gap-y-1"
            >
-            <span
+            <span v-if="editingIndex !==index"
             @click="toggleTask(index)"
             :class="{
             'line-through text-blue-400': task.completed,'cursor-pointer':true
             }"
             >
-            {{ task.text }}</span>
-            <button @click="removeTask(index)">X</button>
+           
+            {{ task.text }}
+          
+          </span>
+          <input v-else v-model="editingText" type="text" 
+          class="px-2 py-1 rounded-md boder focus:outline-none" >
+            
+          <div class="flex gap-2">
+              <button v-if="editingIndex === index" @click="saveEdit(index)" class="text-green-500 font-semibold">Save</button>
+              <button v-if="editingIndex === index" @click="cancelEdit" class="text-gray-500 font-semibold">Cancel</button>
+              <button v-else @click="startEdit(index)" class="text-blue-500 font-semibold">Edit</button>
+              <button @click="removeTask(index)" class="text-red-500 font-semibold">X</button>
+            </div>
+          
           </li>
         </transition-group>
       </div>
@@ -92,7 +125,7 @@ const removeTask = (index: number) => {
   opacity:0;
   transform: translateY(90px);
 }
-.fade-leavve-to{
+.fade-leave-to{
   opacity: 0;
   transform: translateY(90px);
 }
